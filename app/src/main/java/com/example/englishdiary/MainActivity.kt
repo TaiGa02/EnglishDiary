@@ -20,9 +20,17 @@ class MainActivity : AppCompatActivity() {
 
         btnWrite.setOnClickListener {
 
+            //日記を書きページへの遷移
             val intent = Intent(this@MainActivity,WriteDiaryPage::class.java)
             startActivity(intent)
 
+        }
+
+        btnArchive.setOnClickListener {
+
+            //カレンダーページに飛ぶ遷移
+            val intent = Intent(this@MainActivity,Calender::class.java)
+            startActivity(intent)
         }
     }
 }
