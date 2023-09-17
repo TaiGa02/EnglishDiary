@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+
+    <string name="question_label">問題文</string>
+    <string name="count_label">Q%d</string>
+    <string name="btn_answer">選択肢</string>
+
+    <string name="result_title">結果</string>
+    <string name="result_score">５問中%d問正解</string>
+    <string name="btn_try_again">もう一度</string>
+</resources>
