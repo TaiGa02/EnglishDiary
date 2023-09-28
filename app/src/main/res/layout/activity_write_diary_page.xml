@@ -33,9 +33,9 @@
 
     <EditText
         android:id="@+id/diaryTx"
-        android:layout_width="298dp"
-        android:layout_height="496dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="45dp"
         android:background="@color/white"
         android:ems="10"
         android:fontFamily="serif"

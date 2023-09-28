@@ -1,5 +1,6 @@
 package com.example.englishdiary
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -26,6 +27,15 @@ class WriteDiaryPage : AppCompatActivity() {
         btnCounter.setOnClickListener {
             count++
             counterVw.text = "音読数："+count.toString()
+        }
+        btnStore.setOnClickListener {
+            val intent = Intent(this@WriteDiaryPage,StoreCheck::class.java)
+
+            val diaryTx: EditText = findViewById(R.id.diaryTx)
+            val diary: String = diaryTx.text.toString()
+
+            intent.putExtra("diary",diary)
+            startActivity(intent)
         }
     }
 }
