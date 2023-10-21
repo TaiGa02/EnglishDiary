@@ -34,8 +34,10 @@ class WriteDiaryPage : AppCompatActivity() {
 
             val diaryTx: EditText = findViewById(R.id.diaryTx)
             val diary: String = diaryTx.text.toString()
+            val readCount: Long = counterVw.text.toString().toLong() // 音読数を文字列から long 型に変換
 
             intent.putExtra("diary",diary)
+            intent.putExtra("readCount", readCount) // 音読数を Intent に追加
             startActivity(intent)
         }
     }
