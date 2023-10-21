@@ -4,7 +4,7 @@ import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 import java.time.format.DateTimeFormatter
 
-class MyModel :RealmObject() {
+open class MyModel :RealmObject() {
     @PrimaryKey
     var id :Long = 0
     var diary :String = ""

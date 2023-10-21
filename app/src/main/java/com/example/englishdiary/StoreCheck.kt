@@ -29,7 +29,7 @@ class StoreCheck : AppCompatActivity() {
 
         val readCount = intentForDiary.getLongExtra("readCount", 0L)
 
-        val titleTx: EditText = findViewById(R.id.titleTx)
+        val titleTx: EditText = findViewById(R.id.editTitle)
         val diaryTitle: String = titleTx.text.toString() // ユーザーが入力したタイトルを取得
 
         val backBtn: Button = findViewById(R.id.Backbtn)
