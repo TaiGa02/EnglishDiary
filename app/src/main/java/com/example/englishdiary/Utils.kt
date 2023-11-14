@@ -1,3 +1,4 @@
+// Utils.kt
 package com.example.englishdiary
 
 import android.content.Context
@@ -7,10 +8,10 @@ import java.time.format.DateTimeFormatter
 
 object Utils {
 
-    fun getDate(): String {
-        val now = ZonedDateTime.now(ZoneId.of("Asia/Tokyo"))
+    fun getDate(context: Context): String {
+        val zoneId = ZoneId.systemDefault()
+        val now = ZonedDateTime.now(zoneId)
         val df = DateTimeFormatter.ofPattern("dd MMMM")
-        val fdate = df.format(now)
-        return fdate
+        return df.format(now)
     }
 }

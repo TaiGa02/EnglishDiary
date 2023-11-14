@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         val btnArchive: Button = findViewById(R.id.btnArchive)
         val btnHelp: Button = findViewById(R.id.btnHelp)
         val dateTx: TextView = findViewById(R.id.textView2)
-        dateTx.text = Utils.getDate()
+        dateTx.text = Utils.getDate(this)
 
         btnWrite.setOnClickListener {
 

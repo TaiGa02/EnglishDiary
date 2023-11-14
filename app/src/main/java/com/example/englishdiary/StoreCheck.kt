@@ -43,7 +43,7 @@ class StoreCheck : AppCompatActivity() {
         storeBtn.setOnClickListener {
             var diary: String = ""
             var title: String = diaryTitle // ユーザーが入力したタイトルを使用
-            var date: String = SimpleDateFormat("dd MMMM").format(Date()) // フォーマットを変更
+            var date: String = SimpleDateFormat("yyyy-MM-dd").format(Date()) // フォーマットを変更
             var read: Long = 0
             if (!todayDiaryTx.text.isNullOrEmpty()) {
                 diary = todayDiaryTx.toString()
@@ -60,6 +60,10 @@ class StoreCheck : AppCompatActivity() {
                 myModel.read = read
             }
             Toast.makeText(applicationContext, "Your diary was saved.", Toast.LENGTH_SHORT).show()
+            // 日付情報をIntentに追加
+            val intent = Intent(this@StoreCheck, Calender::class.java)
+            intent.putExtra("selectedDate", date) // dateはStoreCheck内で定義された日付情報
+            startActivity(intent)
             finish()
         }
     }

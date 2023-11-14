@@ -1,5 +1,6 @@
 package com.example.englishdiary
 
+import CalenderAdapter
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.time.LocalDate
 import java.time.YearMonth
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.ArrayList
 
@@ -21,7 +23,7 @@ class Calender : AppCompatActivity(), CalenderAdapter.OnItemListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calender)
         initWidgets()
-        selectedDate = LocalDate.now()
+        selectedDate = LocalDate.now(ZoneId.systemDefault())
         setMonthView()
     }
 
@@ -34,7 +36,7 @@ class Calender : AppCompatActivity(), CalenderAdapter.OnItemListener {
         monthYearText.text = monthYearFromDate(selectedDate)
         val daysInMonth = daysInMonthArray(selectedDate)
 
-        val calendarAdapter = CalenderAdapter(daysInMonth, this)
+        val calendarAdapter = CalenderAdapter(daysInMonth, this,selectedDate)
         val layoutManager = GridLayoutManager(applicationContext, 7)
         calendarRecyclerView.layoutManager = layoutManager
         calendarRecyclerView.adapter = calendarAdapter

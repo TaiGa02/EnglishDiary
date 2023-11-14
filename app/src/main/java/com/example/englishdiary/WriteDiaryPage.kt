@@ -21,7 +21,7 @@ class WriteDiaryPage : AppCompatActivity() {
         val btnCounter:Button = findViewById(R.id.btnCounter)
         val counterVw:TextView = findViewById(R.id.counterVw)
         val btnStore:Button = findViewById(R.id.btnStore)
-        dateVw.text = Utils.getDate()
+        dateVw.text = Utils.getDate(this)
         var count = 0
         counterVw.text = "音読数：$count"
 
