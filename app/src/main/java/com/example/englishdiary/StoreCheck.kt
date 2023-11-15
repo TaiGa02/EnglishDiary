@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -30,7 +31,6 @@ class StoreCheck : AppCompatActivity() {
         val readCount = intentForDiary.getLongExtra("readCount", 0L)
 
         val titleTx: EditText = findViewById(R.id.editTitle)
-        val diaryTitle: String = titleTx.text.toString() // ユーザーが入力したタイトルを取得
 
         val backBtn: Button = findViewById(R.id.Backbtn)
         val storeBtn: Button = findViewById(R.id.Storebtn)
@@ -42,11 +42,11 @@ class StoreCheck : AppCompatActivity() {
 
         storeBtn.setOnClickListener {
             var diary: String = ""
-            var title: String = diaryTitle // ユーザーが入力したタイトルを使用
+            var title: String = titleTx.text.toString() // ユーザーが入力したタイトルを使用
             var date: String = SimpleDateFormat("yyyy-MM-dd").format(Date()) // フォーマットを変更
             var read: Long = 0
             if (!todayDiaryTx.text.isNullOrEmpty()) {
-                diary = todayDiaryTx.toString()
+                diary = todayDiaryTx.text.toString()
                 read = readCount
             }
             realm.executeTransaction {
@@ -58,6 +58,10 @@ class StoreCheck : AppCompatActivity() {
                 myModel.title = title
                 myModel.date = date
                 myModel.read = read
+
+                // デバッグログを追加して保存されたデータを確認
+                Log.d("StoreCheck", "Diary saved - Title: $title, Diary: $diary")
+
             }
             Toast.makeText(applicationContext, "Your diary was saved.", Toast.LENGTH_SHORT).show()
             // 日付情報をIntentに追加

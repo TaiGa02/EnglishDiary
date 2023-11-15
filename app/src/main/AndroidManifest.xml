@@ -14,6 +14,9 @@
         android:theme="@style/Theme.EnglishDiary"
         tools:targetApi="31">
         <activity
+            android:name=".ViewDiary"
+            android:exported="false" />
+        <activity
             android:name=".StoreCheck"
             android:exported="false" />
         <activity

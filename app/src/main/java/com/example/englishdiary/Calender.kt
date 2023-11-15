@@ -1,6 +1,7 @@
 package com.example.englishdiary
 
 import CalenderAdapter
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -8,6 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import io.realm.Realm
+import io.realm.kotlin.where
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.ZoneId
@@ -76,8 +79,20 @@ class Calender : AppCompatActivity(), CalenderAdapter.OnItemListener {
 
     override fun onItemClick(position: Int, dayText: String) {
         if (dayText != "") {
-            val message = "Selected Date $dayText ${monthYearFromDate(selectedDate)}"
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+            val selectedDate = "${selectedDate.year}-${String.format("%02d", selectedDate.monthValue)}-$dayText"
+            val intent = Intent(this@Calender, ViewDiary::class.java)
+            intent.putExtra("selectedDate", selectedDate)
+
+            val realm = Realm.getDefaultInstance()
+            val diaryData = realm.where<MyModel>().equalTo("date", selectedDate).findFirst()
+            realm.close()
+
+            if (diaryData != null) {
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "No diary entry found for this date", Toast.LENGTH_SHORT).show()
+            }
         }
     }
+
 }
