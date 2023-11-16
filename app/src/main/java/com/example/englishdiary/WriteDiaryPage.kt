@@ -16,6 +16,7 @@ class WriteDiaryPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_write_diary_page)
+        val apikey = BuildConfig.MY_API_KEY
 
         val dateVw : TextView = findViewById(R.id.dateVw)
         val btnDictionary :ImageButton = findViewById(R.id.btnDictinaly)
