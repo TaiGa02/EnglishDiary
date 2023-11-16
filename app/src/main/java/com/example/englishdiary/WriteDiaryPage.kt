@@ -16,6 +16,8 @@ class WriteDiaryPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_write_diary_page)
 
+        //apiKey = AIzaSyAu92HgZRul8RXRmRaJDDNazAIf5z_vPFs
+
         val dateVw : TextView = findViewById(R.id.dateVw)
         val btnDictionary :ImageButton = findViewById(R.id.btnDictinaly)
         val btnCounter:Button = findViewById(R.id.btnCounter)

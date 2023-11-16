@@ -8,8 +8,12 @@ apply plugin: "realm-android"
 android {
     namespace 'com.example.englishdiary'
     compileSdk 34
+    packagingOptions {
+        exclude 'META-INF/INDEX.LIST' // 重複するファイルを除外
+        exclude 'META-INF/DEPENDENCIES'
+    }
 
-    defaultConfig {
+        defaultConfig {
         applicationId "com.example.englishdiary"
         minSdk 26
         targetSdk 34
@@ -40,6 +44,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.10.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.cloud:google-cloud-translate:2.4.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
