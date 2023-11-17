@@ -16,6 +16,7 @@ import java.time.YearMonth
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.ArrayList
+import java.util.Locale
 
 class Calender : AppCompatActivity(), CalenderAdapter.OnItemListener {
     private lateinit var monthYearText: TextView
@@ -63,7 +64,7 @@ class Calender : AppCompatActivity(), CalenderAdapter.OnItemListener {
     }
 
     private fun monthYearFromDate(date: LocalDate): String {
-        val formatter = DateTimeFormatter.ofPattern("MMMM yyyy")
+        val formatter = DateTimeFormatter.ofPattern("MMMM yyyy", Locale.ENGLISH)
         return date.format(formatter)
     }
 
