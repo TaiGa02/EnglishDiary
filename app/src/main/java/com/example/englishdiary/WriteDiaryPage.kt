@@ -1,10 +1,10 @@
 package com.example.englishdiary
 
 import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -12,11 +12,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.google.cloud.translate.Translate
 import com.google.cloud.translate.TranslateOptions
-import com.google.cloud.translate.Translation
-
 
 class WriteDiaryPage : AppCompatActivity() {
     private val apikey = BuildConfig.MY_API_KEY
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +49,7 @@ class WriteDiaryPage : AppCompatActivity() {
         }
 
         btnDictionary.setOnClickListener{
-            val dialogView = layoutInflater.inflate(R.layout.dictionary_dialog,null)
+            val dialogView = layoutInflater.inflate(R.layout.dictionary_dialog, null)
             val builder = AlertDialog.Builder(this).setView(dialogView).setTitle("Dictionary")
 
             val sourceEt : EditText = dialogView.findViewById(R.id.sourceEt)
@@ -60,12 +59,12 @@ class WriteDiaryPage : AppCompatActivity() {
             translateBtn.setOnClickListener{
                 val textToTranslate = sourceEt.text.toString()
 
-                val translatedText = translateText(textToTranslate)
-
-                resultTx.text = translatedText
+                translateText(textToTranslate) { translatedText ->
+                    resultTx.text = translatedText
+                }
             }
 
-            builder.setPositiveButton("Back"){dialog, _ ->
+            builder.setPositiveButton("Back"){ dialog: DialogInterface, _: Int ->
                 dialog.dismiss()
             }
 
@@ -73,10 +72,15 @@ class WriteDiaryPage : AppCompatActivity() {
             dialog.show()
         }
     }
-    private fun translateText(textToTranslate: String): String{
+
+    private fun translateText(textToTranslate: String, onTranslationComplete: (String) -> Unit) {
         val targetLang = "en"
         val translate = TranslateOptions.newBuilder().setApiKey(apikey).build().service
-        val translation = translate.translate(textToTranslate, Translate.TranslateOption.targetLanguage(targetLang))
-        return translation.translatedText
+        Thread {
+            val translation = translate.translate(textToTranslate, Translate.TranslateOption.targetLanguage(targetLang))
+            runOnUiThread {
+                onTranslationComplete(translation.translatedText)
+            }
+        }.start()
     }
 }
