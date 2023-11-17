@@ -9,14 +9,18 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import com.google.cloud.translate.Translate
+import com.google.cloud.translate.TranslateOptions
+import com.google.cloud.translate.Translation
 
 
 class WriteDiaryPage : AppCompatActivity() {
+    private val apikey = BuildConfig.MY_API_KEY
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_write_diary_page)
-        val apikey = BuildConfig.MY_API_KEY
 
         val dateVw : TextView = findViewById(R.id.dateVw)
         val btnDictionary :ImageButton = findViewById(R.id.btnDictinaly)
@@ -44,5 +48,35 @@ class WriteDiaryPage : AppCompatActivity() {
             intent.putExtra("readCount", readCount) // 音読数を Intent に追加
             startActivity(intent)
         }
+
+        btnDictionary.setOnClickListener{
+            val dialogView = layoutInflater.inflate(R.layout.dictionary_dialog,null)
+            val builder = AlertDialog.Builder(this).setView(dialogView).setTitle("Dictionary")
+
+            val sourceEt : EditText = dialogView.findViewById(R.id.sourceEt)
+            val resultTx : TextView = dialogView.findViewById(R.id.resultTx)
+            val translateBtn : Button = dialogView.findViewById(R.id.translateBtn)
+
+            translateBtn.setOnClickListener{
+                val textToTranslate = sourceEt.text.toString()
+
+                val translatedText = translateText(textToTranslate)
+
+                resultTx.text = translatedText
+            }
+
+            builder.setPositiveButton("Back"){dialog, _ ->
+                dialog.dismiss()
+            }
+
+            val dialog = builder.create()
+            dialog.show()
+        }
+    }
+    private fun translateText(textToTranslate: String): String{
+        val targetLang = "en"
+        val translate = TranslateOptions.newBuilder().setApiKey(apikey).build().service
+        val translation = translate.translate(textToTranslate, Translate.TranslateOption.targetLanguage(targetLang))
+        return translation.translatedText
     }
 }
