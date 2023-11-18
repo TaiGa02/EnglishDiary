@@ -8,13 +8,13 @@ import android.widget.Button
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val btnWrite: Button = findViewById(R.id.btnWrite)
-        val btnArchive: Button = findViewById(R.id.btnArchive)
-        val btnHelp: Button = findViewById(R.id.btnHelp)
+        val btnCalendar: Button = findViewById(R.id.btnCalendar)
         val dateTx: TextView = findViewById(R.id.textView2)
         dateTx.text = Utils.getDate(this)
 
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        btnArchive.setOnClickListener {
+        btnCalendar.setOnClickListener {
 
             //カレンダーページに飛ぶ遷移
             val intent = Intent(this@MainActivity,Calender::class.java)

@@ -45,25 +45,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/btnArchive"
+        android:id="@+id/btnCalendar"
         android:layout_width="130dp"
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
         android:fontFamily="serif"
-        android:text="See Archive"
+        android:text="Calendar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnWrite" />
-
-    <Button
-        android:id="@+id/btnHelp"
-        android:layout_width="130dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="serif"
-        android:text="Help"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnArchive" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

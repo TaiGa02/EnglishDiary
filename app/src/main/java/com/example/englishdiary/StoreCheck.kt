@@ -40,7 +40,7 @@ class StoreCheck : AppCompatActivity() {
             finish()
         }
 
-        storeBtn.setOnClickListener {
+        storeBtn.setOnClickListener StoreCheck@{
             var diary: String = ""
             var title: String = titleTx.text.toString() // ユーザーが入力したタイトルを使用
             var date: String = SimpleDateFormat("yyyy-MM-dd").format(Date()) // フォーマットを変更
@@ -49,26 +49,33 @@ class StoreCheck : AppCompatActivity() {
                 diary = todayDiaryTx.text.toString()
                 read = readCount
             }
-            realm.executeTransaction {
-                val currentId = realm.where<MyModel>().max("id")
-                val nextId = (currentId?.toLong() ?: 0L) + 1L
-
-                val myModel = realm.createObject<MyModel>(nextId)
-                myModel.diary = diary
-                myModel.title = title
-                myModel.date = date
-                myModel.read = read
-
-                // デバッグログを追加して保存されたデータを確認
-                Log.d("StoreCheck", "Diary saved - Title: $title, Diary: $diary")
-
+            if(title.isEmpty()){
+                // テキストが空の場合、アラートを表示
+                Toast.makeText(this@StoreCheck, "タイトルを書いてください", Toast.LENGTH_SHORT).show()
+                return@StoreCheck // ページ遷移を行わないため、処理を中断
             }
+            else{
+                realm.executeTransaction {
+                    val currentId = realm.where<MyModel>().max("id")
+                    val nextId = (currentId?.toLong() ?: 0L) + 1L
+
+                    val myModel = realm.createObject<MyModel>(nextId)
+                    myModel.diary = diary
+                    myModel.title = title
+                    myModel.date = date
+                    myModel.read = read
+
+                    // デバッグログを追加して保存されたデータが正しいか確認
+                    Log.d("StoreCheck", "Diary saved - Title: $title, Diary: $diary")
+
+                }
             Toast.makeText(applicationContext, "Your diary was saved.", Toast.LENGTH_SHORT).show()
             // 日付情報をIntentに追加
             val intent = Intent(this@StoreCheck, Calender::class.java)
             intent.putExtra("selectedDate", date) // dateはStoreCheck内で定義された日付情報
             startActivity(intent)
             finish()
+            }
         }
     }
 

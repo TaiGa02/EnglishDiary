@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.cloud.translate.Translate
 import com.google.cloud.translate.TranslateOptions
@@ -35,15 +36,21 @@ class WriteDiaryPage : AppCompatActivity() {
             counterVw.text = "音読数：$count"
         }
         btnStore.setOnClickListener {
-            val intent = Intent(this@WriteDiaryPage,StoreCheck::class.java)
+            val intent = Intent(this@WriteDiaryPage, StoreCheck::class.java)
 
             val diaryTx: EditText = findViewById(R.id.diaryTx)
-            val diary: String = diaryTx.text.toString()
+            val diary: String = diaryTx.text.toString().trim() // trim() を使って空白を除去
+
+            if (diary.isEmpty()) {
+                // テキストが空の場合、アラートを表示
+                Toast.makeText(this@WriteDiaryPage, "日記を書いてください", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener // ページ遷移を行わないため、処理を中断
+            }
+
             val readCountText = counterVw.text.toString()
             val readCount = readCountText.substringAfter("音読数：").toLong()
 
-
-            intent.putExtra("diary",diary)
+            intent.putExtra("diary", diary)
             intent.putExtra("readCount", readCount) // 音読数を Intent に追加
             startActivity(intent)
         }

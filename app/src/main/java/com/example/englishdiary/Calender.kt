@@ -95,5 +95,4 @@ class Calender : AppCompatActivity(), CalenderAdapter.OnItemListener {
             }
         }
     }
-
 }
