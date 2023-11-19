@@ -10,6 +10,7 @@ import io.realm.Realm
 import io.realm.kotlin.where
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 class ViewDiary : AppCompatActivity() {
     private lateinit var realm: Realm
@@ -40,7 +41,7 @@ class ViewDiary : AppCompatActivity() {
 
         // 日付のフォーマットを定義
         val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-        val dateFormatterOutput = DateTimeFormatter.ofPattern("dd MMMM")
+        val dateFormatterOutput = DateTimeFormatter.ofPattern("dd MMMM", Locale.ENGLISH)
 
         // 日付文字列を LocalDate に変換
         val localDate = LocalDate.parse(selectedDate, dateFormatter)
