@@ -24,7 +24,7 @@ class StoreCheck : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_store_check)
 
-
+        // Intentから日記と音読数を取得し、表示するTextViewにセット
         val intentForDiary = intent
         val todayDiary = intentForDiary.getStringExtra("diary")
         val todayDiaryTx: TextView = findViewById(R.id.todayDiaryTx)
@@ -38,8 +38,8 @@ class StoreCheck : AppCompatActivity() {
         val storeBtn: Button = findViewById(R.id.Storebtn)
         realm = Realm.getDefaultInstance()
 
+        // 既存の日記があればタイトルをセット
         val existingDiary = realm.where<MyModel>().equalTo("date", Utils.getDateWithFormat("yyyy-MM-dd",this)).findFirst()
-
         if (existingDiary != null) {
             titleTx.setText(existingDiary.title)
         }
@@ -58,13 +58,13 @@ class StoreCheck : AppCompatActivity() {
                 read = readCount
             }
             if(title.isEmpty()){
-                // テキストが空の場合、アラートを表示
+                // タイトルが空の場合、アラートを表示して処理を中断
                 Toast.makeText(this@StoreCheck, "タイトルを書いてください", Toast.LENGTH_SHORT).show()
-                return@StoreCheck // ページ遷移を行わないため、処理を中断
+                return@StoreCheck
             }
 
             if (existingDiary != null) {
-                // 日記が存在する場合、上書きするか確認するダイアログを表示
+                // 既存の日記がある場合、上書きするか確認するダイアログを表示
                 val dialogBuilder = AlertDialog.Builder(this)
                 dialogBuilder.setMessage("既にこの日付の日記が存在します。上書きしますか？")
                     .setCancelable(false)
@@ -88,6 +88,7 @@ class StoreCheck : AppCompatActivity() {
                 alertDialog.show()
             }
             else{
+                // 新規の日記を追加
                 realm.executeTransaction {
                     val currentId = realm.where<MyModel>().max("id")
                     val nextId = (currentId?.toLong() ?: 0L) + 1L
@@ -102,12 +103,12 @@ class StoreCheck : AppCompatActivity() {
                     Log.d("StoreCheck", "Diary saved - Title: $title, Diary: $diary, Date: $date")
 
                 }
-            Toast.makeText(applicationContext, "Your diary was saved.", Toast.LENGTH_SHORT).show()
-            // 日付情報をIntentに追加
-            val intent = Intent(this@StoreCheck, Calender::class.java)
-            intent.putExtra("selectedDate", date) // dateはStoreCheck内で定義された日付情報
-            startActivity(intent)
-            finish()
+                Toast.makeText(applicationContext, "Your diary was saved.", Toast.LENGTH_SHORT).show()
+                // 日付情報をIntentに追加してカレンダー画面に遷移
+                val intent = Intent(this@StoreCheck, Calender::class.java)
+                intent.putExtra("selectedDate", date) // dateはStoreCheck内で定義された日付情報
+                startActivity(intent)
+                finish()
             }
         }
     }

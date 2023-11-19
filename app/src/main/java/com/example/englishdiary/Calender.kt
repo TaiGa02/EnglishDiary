@@ -26,16 +26,22 @@ class Calender : AppCompatActivity(), CalenderAdapter.OnItemListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calender)
+
+        //レイアウトないのウィジェットの初期化を行います
         initWidgets()
+
+        //現在の日付を取得し、月のビューをセット
         selectedDate = LocalDate.now(ZoneId.systemDefault())
         setMonthView()
     }
 
+    // ウィジェットの初期化を行うメソッド
     private fun initWidgets() {
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView)
         monthYearText = findViewById(R.id.MonYear)
     }
 
+    // 月のビューを設定するメソッド
     private fun setMonthView() {
         monthYearText.text = monthYearFromDate(selectedDate)
         val daysInMonth = daysInMonthArray(selectedDate)
@@ -46,6 +52,7 @@ class Calender : AppCompatActivity(), CalenderAdapter.OnItemListener {
         calendarRecyclerView.adapter = calendarAdapter
     }
 
+    // 月の日数を配列にして返すメソッド
     private fun daysInMonthArray(date: LocalDate): ArrayList<String> {
         val daysInMonthArray = ArrayList<String>()
         val yearMonth = YearMonth.from(date)
@@ -63,21 +70,25 @@ class Calender : AppCompatActivity(), CalenderAdapter.OnItemListener {
         return daysInMonthArray
     }
 
+    // 日付から月と年を取得して返すメソッド
     private fun monthYearFromDate(date: LocalDate): String {
         val formatter = DateTimeFormatter.ofPattern("MMMM yyyy", Locale.ENGLISH)
         return date.format(formatter)
     }
 
+    // 前の月への移動を行うメソッド
     fun prevMonth(view: View) {
         selectedDate = selectedDate.minusMonths(1)
         setMonthView()
     }
 
+    // 次の月への移動を行うメソッド
     fun nextMonth(view: View) {
         selectedDate = selectedDate.plusMonths(1)
         setMonthView()
     }
 
+    // カレンダーの日付をクリックしたときの処理を行うメソッド
     override fun onItemClick(position: Int, dayText: String) {
         if (dayText != "") {
             val selectedDate = "${selectedDate.year}-${String.format("%02d", selectedDate.monthValue)}-$dayText"

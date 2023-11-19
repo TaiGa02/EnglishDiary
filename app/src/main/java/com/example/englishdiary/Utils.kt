@@ -9,6 +9,7 @@ import java.util.Locale
 
 object Utils {
 
+    // 現在の日付を "dd MMMM" のフォーマットで取得する
     fun getDate(context: Context): String {
         val zoneId = ZoneId.systemDefault()
         val now = ZonedDateTime.now(zoneId)
@@ -16,6 +17,7 @@ object Utils {
         return df.format(now)
     }
 
+    // 指定されたフォーマットで現在の日付を取得する
     fun getDateWithFormat(format: String, context: Context): String {
         val zoneId = ZoneId.systemDefault()
         val now = ZonedDateTime.now(zoneId)

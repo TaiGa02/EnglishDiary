@@ -27,8 +27,10 @@ class ViewDiary : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_diary)
 
+        // Realmのインスタンスを取得
         realm = Realm.getDefaultInstance()
 
+        // Realmのインスタンスを取得
         diaryDateTx = findViewById(R.id.DiaryDatetx)
         diaryTitleTx = findViewById(R.id.DiaryTitletx)
         viewDiaryTx = findViewById(R.id.ViewDiarytx)
@@ -64,17 +66,20 @@ class ViewDiary : AppCompatActivity() {
             Log.d("ViewDiary", "Diary data retrieved - Title: ${diaryData.title}, Diary: ${diaryData.diary}")
         }
 
+        // 戻るボタンのクリック処理
         backToCalendarBtn.setOnClickListener {
             updateReadCount()
             finish()
         }
 
+        // 音読ボタンのクリック処理
         btnRead.setOnClickListener {
             readCount++
             readCountTx.text = "音読数: $readCount"
         }
     }
 
+    // 音読数を更新する関数
     private fun updateReadCount() {
         realm.executeTransaction {
             val diaryData = realm.where<MyModel>().equalTo("date", diaryDateTx.text.toString()).findFirst()

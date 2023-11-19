@@ -13,23 +13,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // 「日記を書く」ボタン
         val btnWrite: Button = findViewById(R.id.btnWrite)
+
+        // 「カレンダーを見る」ボタン
         val btnCalendar: Button = findViewById(R.id.btnCalendar)
+
+        // 日付を表示するTextView
         val dateTx: TextView = findViewById(R.id.textView2)
         dateTx.text = Utils.getDate(this)
 
         btnWrite.setOnClickListener {
-
-            //日記を書きページへの遷移
-            val intent = Intent(this@MainActivity,WriteDiaryPage::class.java)
+            // 日記を書く画面へ遷移
+            val intent = Intent(this@MainActivity, WriteDiaryPage::class.java)
             startActivity(intent)
-
         }
 
         btnCalendar.setOnClickListener {
-
-            //カレンダーページに飛ぶ遷移
-            val intent = Intent(this@MainActivity,Calender::class.java)
+            // カレンダー画面へ遷移
+            val intent = Intent(this@MainActivity, Calender::class.java)
             startActivity(intent)
         }
     }

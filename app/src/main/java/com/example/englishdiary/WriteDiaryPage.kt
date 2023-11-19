@@ -27,37 +27,43 @@ class WriteDiaryPage : AppCompatActivity() {
 
         realm = Realm.getDefaultInstance()
 
+        // 画面上の要素を取得
         val dateVw : TextView = findViewById(R.id.dateVw)
         val btnDictionary :ImageButton = findViewById(R.id.btnDictinaly)
         val btnCounter:Button = findViewById(R.id.btnCounter)
         val counterVw:TextView = findViewById(R.id.counterVw)
         val btnStore:Button = findViewById(R.id.btnStore)
         val diaryTx: EditText = findViewById(R.id.diaryTx)
+
+        // 日付を取得して表示
         dateVw.text = Utils.getDate(this)
         var count = 0
         counterVw.text = "音読数：$count"
 
+        // 既存の日記があれば表示する
         val existingDiary = realm.where<MyModel>().equalTo("date", Utils.getDateWithFormat("yyyy-MM-dd",this)).findFirst()
-
         if (existingDiary != null) {
             diaryTx.setText(existingDiary.diary)
             count = existingDiary.read.toInt()
             counterVw.text = "音読数：$count"
         }
 
+        // 音読数を増やすボタン
         btnCounter.setOnClickListener {
             count++
             counterVw.text = "音読数：$count"
         }
+
+        // 日記を保存するボタン
         btnStore.setOnClickListener {
             val intent = Intent(this@WriteDiaryPage, StoreCheck::class.java)
 
-            val diary: String = diaryTx.text.toString().trim() // trim() を使って空白を除去
+            val diary: String = diaryTx.text.toString().trim() // 空白を除去
 
             if (diary.isEmpty()) {
-                // テキストが空の場合、アラートを表示
+                // 日記が空の場合、アラートを表示して処理を中断
                 Toast.makeText(this@WriteDiaryPage, "日記を書いてください", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener // ページ遷移を行わないため、処理を中断
+                return@setOnClickListener
             }
 
             val readCountText = counterVw.text.toString()
@@ -68,6 +74,7 @@ class WriteDiaryPage : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 翻訳ボタンを押した時の処理
         btnDictionary.setOnClickListener{
             val dialogView = layoutInflater.inflate(R.layout.dictionary_dialog, null)
             val builder = AlertDialog.Builder(this).setView(dialogView).setTitle("Dictionary")
@@ -79,11 +86,13 @@ class WriteDiaryPage : AppCompatActivity() {
             translateBtn.setOnClickListener{
                 val textToTranslate = sourceEt.text.toString()
 
+                // テキストを翻訳して表示
                 translateText(textToTranslate) { translatedText ->
                     resultTx.text = translatedText
                 }
             }
 
+            // 戻るボタン
             builder.setPositiveButton("Back"){ dialog: DialogInterface, _: Int ->
                 dialog.dismiss()
             }
@@ -93,6 +102,7 @@ class WriteDiaryPage : AppCompatActivity() {
         }
     }
 
+    // テキスト翻訳の関数
     private fun translateText(textToTranslate: String, onTranslationComplete: (String) -> Unit) {
         val targetLang = "en"
         val translate = TranslateOptions.newBuilder().setApiKey(apikey).build().service
