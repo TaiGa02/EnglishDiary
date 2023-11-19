@@ -99,9 +99,6 @@ class StoreCheck : AppCompatActivity() {
                     myModel.date = date
                     myModel.read = read
 
-                    // デバッグログを追加して保存されたデータが正しいか確認
-                    Log.d("StoreCheck", "Diary saved - Title: $title, Diary: $diary, Date: $date")
-
                 }
                 Toast.makeText(applicationContext, "Your diary was saved.", Toast.LENGTH_SHORT).show()
                 // 日付情報をIntentに追加してカレンダー画面に遷移

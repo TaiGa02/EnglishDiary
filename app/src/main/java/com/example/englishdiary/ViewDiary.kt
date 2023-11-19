@@ -61,9 +61,6 @@ class ViewDiary : AppCompatActivity() {
             viewDiaryTx.text = diaryData.diary
             readCount = diaryData.read
             readCountTx.text = "音読数: $readCount"
-
-            // デバッグログを追加
-            Log.d("ViewDiary", "Diary data retrieved - Title: ${diaryData.title}, Diary: ${diaryData.diary}")
         }
 
         // 戻るボタンのクリック処理
