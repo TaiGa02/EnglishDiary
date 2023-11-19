@@ -2,7 +2,6 @@ package com.example.englishdiary
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
-import java.time.format.DateTimeFormatter
 
 open class MyModel :RealmObject() {
     @PrimaryKey
