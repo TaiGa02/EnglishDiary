@@ -13,23 +13,37 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.cloud.translate.Translate
 import com.google.cloud.translate.TranslateOptions
+import io.realm.Realm
+import io.realm.kotlin.where
 
 class WriteDiaryPage : AppCompatActivity() {
     private val apikey = BuildConfig.MY_API_KEY
+    private lateinit var realm: Realm
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_write_diary_page)
 
+        realm = Realm.getDefaultInstance()
+
         val dateVw : TextView = findViewById(R.id.dateVw)
         val btnDictionary :ImageButton = findViewById(R.id.btnDictinaly)
         val btnCounter:Button = findViewById(R.id.btnCounter)
         val counterVw:TextView = findViewById(R.id.counterVw)
         val btnStore:Button = findViewById(R.id.btnStore)
+        val diaryTx: EditText = findViewById(R.id.diaryTx)
         dateVw.text = Utils.getDate(this)
         var count = 0
         counterVw.text = "音読数：$count"
+
+        val existingDiary = realm.where<MyModel>().equalTo("date", Utils.getDateWithFormat("yyyy-MM-dd",this)).findFirst()
+
+        if (existingDiary != null) {
+            diaryTx.setText(existingDiary.diary)
+            count = existingDiary.read.toInt()
+            counterVw.text = "音読数：$count"
+        }
 
         btnCounter.setOnClickListener {
             count++
@@ -38,7 +52,6 @@ class WriteDiaryPage : AppCompatActivity() {
         btnStore.setOnClickListener {
             val intent = Intent(this@WriteDiaryPage, StoreCheck::class.java)
 
-            val diaryTx: EditText = findViewById(R.id.diaryTx)
             val diary: String = diaryTx.text.toString().trim() // trim() を使って空白を除去
 
             if (diary.isEmpty()) {
@@ -89,5 +102,10 @@ class WriteDiaryPage : AppCompatActivity() {
                 onTranslationComplete(translation.translatedText)
             }
         }.start()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        realm.close()
     }
 }
