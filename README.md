@@ -89,6 +89,8 @@ SDK - Android Studio
 カレンダーにデータを渡し、ハイライト及び詳細を見る機能の導入時
 
     Log機能を使いどのようなデータが途中でインプットされたのか追って上手く処理が渡るようにした
+    // デバッグログを追加して保存されたデータが正しいか確認
+    Log.d("StoreCheck", "Diary saved - Title: $title, Diary: $diary, Date: $date")
     Realmにはyyyy-MM-ddのフォーマットで保存している一方でユーザーに見せているのはMMMM yyyyもしくはdd MMMMだったためデータの判別に工夫が必要だった
 
 APIの導入時
