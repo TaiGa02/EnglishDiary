@@ -1,10 +1,11 @@
-package com.example.englishdiary
+package com.taiga.englishdiary
 
 import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -88,7 +89,8 @@ class WriteDiaryPage : AppCompatActivity() {
 
                 // テキストを翻訳して表示
                 translateText(textToTranslate) { translatedText ->
-                    resultTx.text = translatedText
+                    val decodedText = Html.fromHtml(translatedText, Html.FROM_HTML_MODE_LEGACY).toString()
+                    resultTx.text = decodedText
                 }
             }
 

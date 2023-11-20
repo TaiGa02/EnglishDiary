@@ -1,4 +1,4 @@
-package com.example.englishdiary
+package com.taiga.englishdiary
 
 import android.app.Application
 import io.realm.Realm

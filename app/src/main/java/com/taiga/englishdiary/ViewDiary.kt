@@ -1,4 +1,4 @@
-package com.example.englishdiary
+package com.taiga.englishdiary
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -38,7 +38,7 @@ class ViewDiary : AppCompatActivity() {
         btnRead = findViewById(R.id.btnRead)
 
         // カレンダーからの選択された日付を取得
-        val selectedDate = intent.getStringExtra("selectedDate")
+        var selectedDate = intent.getStringExtra("selectedDate")
 
         // 日付のフォーマットを定義
         val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
@@ -60,6 +60,7 @@ class ViewDiary : AppCompatActivity() {
             viewDiaryTx.text = diaryData.diary
             readCount = diaryData.read
             readCountTx.text = "音読数: $readCount"
+
         }
 
         // 戻るボタンのクリック処理
@@ -77,8 +78,10 @@ class ViewDiary : AppCompatActivity() {
 
     // 音読数を更新する関数
     private fun updateReadCount() {
+        // カレンダーからの選択された日付を取得
+        val selectedDate = intent.getStringExtra("selectedDate")
         realm.executeTransaction {
-            val diaryData = realm.where<MyModel>().equalTo("date", diaryDateTx.text.toString()).findFirst()
+            val diaryData = realm.where<MyModel>().equalTo("date", selectedDate).findFirst()
             diaryData?.read = readCount
         }
     }

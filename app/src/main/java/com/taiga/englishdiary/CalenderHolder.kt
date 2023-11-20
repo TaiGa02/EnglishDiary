@@ -1,4 +1,4 @@
-package com.example.englishdiary
+package com.taiga.englishdiary
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView

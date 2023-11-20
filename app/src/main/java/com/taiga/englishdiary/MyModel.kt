@@ -1,4 +1,4 @@
-package com.example.englishdiary
+package com.taiga.englishdiary
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey

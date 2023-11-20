@@ -1,4 +1,4 @@
-package com.example.englishdiary
+package com.taiga.englishdiary
 
 import org.junit.Test
 

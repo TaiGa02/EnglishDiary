@@ -1,5 +1,5 @@
 // Utils.kt
-package com.example.englishdiary
+package com.taiga.englishdiary
 
 import android.content.Context
 import java.time.ZoneId
