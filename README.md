@@ -4,6 +4,9 @@
 ![diary](https://github.com/TaiGa02/EnglishDiary/assets/135023031/5a9719a3-100b-40f8-b32f-310a85d71e11)
 
 
+https://github.com/TaiGa02/EnglishDiary/assets/135023031/4c793fb8-5acc-451f-a28d-c18a96323190
+
+
 ## <アプリの概要>
 
 - 英語日記の作成が可能
