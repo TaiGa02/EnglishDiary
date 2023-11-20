@@ -14,6 +14,15 @@ https://github.com/TaiGa02/EnglishDiary/assets/135023031/4c793fb8-5acc-451f-a28d
 - 分からない単語や表現などはすぐに検索可能
 - 音読数も管理
 
+## <使用した技術等>
+
+言語 - Kotlin
+SDK - Android Studio
+データベース - Realm
+外部API - Cloud Translation API
+開発期間 - 3か月(言語の学習を含む)
+
+
 ## <英語日記の説明>
 
 ### 1. 日記を記録する。
@@ -74,3 +83,22 @@ https://github.com/TaiGa02/EnglishDiary/assets/135023031/4c793fb8-5acc-451f-a28d
 
 ![diary10](https://github.com/TaiGa02/EnglishDiary/assets/135023031/edc2e322-ab46-4210-bb13-c302caaf82f8)
 ![diary11](https://github.com/TaiGa02/EnglishDiary/assets/135023031/6c4d0664-4301-42f9-86b3-29ef553b7af5)
+
+## <特に苦労した点>
+
+カレンダーにデータを渡し、ハイライト及び詳細を見る機能の導入時
+
+    Log機能を使いどのようなデータが途中でインプットされたのか追って上手く処理が渡るようにした
+    Realmにはyyyy-MM-ddのフォーマットで保存している一方でユーザーに見せているのはMMMM yyyyもしくはdd MMMMだったためデータの判別に工夫が必要だった
+
+APIの導入時
+
+    APIの導入後ビルド自体ができなくなった
+    エラーを調査し
+    packagingOptions {
+         exclude 'META-INF/INDEX.LIST' // 重複するファイルを除外
+         exclude 'META-INF/DEPENDENCIES'
+     }
+     をgradle(app)に置くことでビルド時に重複するファイルについて除外した
+
+
