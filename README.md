@@ -1,5 +1,5 @@
 # EnglishDiary 英語日記
-※2023年11月20日現在google play storeに申請中
+※2023年11月21日現在google play storeに申請中
 
 ![diary](https://github.com/TaiGa02/EnglishDiary/assets/135023031/5a9719a3-100b-40f8-b32f-310a85d71e11)
 
