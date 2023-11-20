@@ -17,9 +17,13 @@ https://github.com/TaiGa02/EnglishDiary/assets/135023031/4c793fb8-5acc-451f-a28d
 ## <使用した技術等>
 
 言語 - Kotlin
+
 SDK - Android Studio
+
 データベース - Realm
+
 外部API - Cloud Translation API
+
 開発期間 - 3か月(言語の学習を含む)
 
 
