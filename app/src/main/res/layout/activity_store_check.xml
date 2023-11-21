@@ -11,11 +11,11 @@
         android:id="@+id/todayDiaryTx"
         android:layout_width="300dp"
         android:layout_height="499dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:background="@color/white"
+        android:padding="10dp"
         android:text="TextView"
         android:textColor="@color/black"
-        android:padding="10dp"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,14 +25,14 @@
         android:id="@+id/editTitle"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
         android:background="@color/white"
         android:ems="10"
         android:hint="Title or Icon"
-        android:textColor="@color/black"
         android:inputType="text"
         android:maxLength="20"
         android:textAlignment="center"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/todayDiaryTx" />
@@ -42,20 +42,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="32dp"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTitle" />
 
     <Button
         android:id="@+id/Storebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:text="STORE"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTitle" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
