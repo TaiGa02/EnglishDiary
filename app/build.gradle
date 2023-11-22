@@ -6,7 +6,7 @@ plugins {
 apply plugin: "realm-android"
 
 android {
-    namespace 'com.taiga.englishdiary'
+    namespace 'com.Ishihara.englishdiary'
     compileSdk 34
     packagingOptions {
         exclude 'META-INF/INDEX.LIST' // 重複するファイルを除外
@@ -14,7 +14,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.taiga.englishdiary"
+        applicationId "com.Ishihara.englishdiary"
         minSdk 26
         targetSdk 34
         versionCode 2

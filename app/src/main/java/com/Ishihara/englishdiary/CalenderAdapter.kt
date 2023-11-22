@@ -2,9 +2,9 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.taiga.englishdiary.CalenderViewHolder
-import com.taiga.englishdiary.MyModel
-import com.taiga.englishdiary.R
+import com.Ishihara.englishdiary.CalenderViewHolder
+import com.Ishihara.englishdiary.MyModel
+import com.Ishihara.englishdiary.R
 import io.realm.Realm
 import io.realm.kotlin.where
 import java.time.LocalDate

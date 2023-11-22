@@ -1,4 +1,4 @@
-package com.taiga.englishdiary
+package com.Ishihara.englishdiary
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView

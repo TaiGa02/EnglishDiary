@@ -1,4 +1,4 @@
-package com.taiga.englishdiary
+package com.Ishihara.englishdiary
 
 import android.annotation.SuppressLint
 import android.os.Bundle
