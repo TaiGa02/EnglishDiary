@@ -4,7 +4,7 @@
 ![diary](https://github.com/TaiGa02/EnglishDiary/assets/135023031/5a9719a3-100b-40f8-b32f-310a85d71e11)
 
 
-https://github.com/TaiGa02/EnglishDiary/assets/135023031/4c793fb8-5acc-451f-a28d-c18a96323190
+https://github.com/TaiGa02/EnglishDiary/assets/135023031/b6224153-d896-432d-946d-c7c7074f83ca
 
 
 ## <アプリの概要>
