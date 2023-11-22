@@ -1,8 +1,30 @@
 # EnglishDiary 英語日記
-※2023年11月22日現在google play storeに申請中
+※2023年11月23日現在google play storeに申請を中断
+リリースをするために必要なクローズドテストの要件の20人以上のテスターに14日以上連続で使用してもらうハードルが今は高いため、中断中
 
 ![diary](https://github.com/TaiGa02/EnglishDiary/assets/135023031/5a9719a3-100b-40f8-b32f-310a85d71e11)
 
+<br>
+
+
+<img width="655" alt="スクリーンショット 2023-11-23 035831" src="https://github.com/TaiGa02/EnglishDiary/assets/135023031/f665aef1-0ada-484d-ac82-006573acfdc5">
+
+参照
+https://support.google.com/googleplay/android-developer/answer/14151465#production&zippy=%2C%E3%83%91%E3%83%BC%E3%83%88-%E3%82%AF%E3%83%AD%E3%83%BC%E3%82%BA%E3%83%89-%E3%83%86%E3%82%B9%E3%83%88%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E6%83%85%E5%A0%B1%E3%81%AE%E6%8F%90%E4%BE%9B%2C%E8%A3%BD%E5%93%81%E7%89%88%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%82%92%E7%94%B3%E8%AB%8B%E3%81%99%E3%82%8B%E3%81%AB%E3%81%AF%E3%83%86%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%8C-%E6%97%A5%E9%96%93%E4%BB%A5%E4%B8%8A%E9%80%A3%E7%B6%9A%E3%81%A7%E3%82%AA%E3%83%97%E3%83%88%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E5%BF%85%E8%A6%81%E3%81%8C%E3%81%82%E3%82%8B%E3%81%A8%E3%81%AE%E3%81%93%E3%81%A8%E3%81%A7%E3%81%99%E3%81%8C%E3%81%93%E3%82%8C%E3%81%AF%E3%81%A9%E3%81%86%E3%81%84%E3%81%86%E6%84%8F%E5%91%B3%E3%81%A7%E3%81%99%E3%81%8B
+
+
+<br>
+<br>
+
+## <アプリの試し方>
+
+- googleグループに参加
+- url: https://groups.google.com/my-groups
+- 参加後記載されているurlからAndroidのgoogle playを使用しご利用可能となっています。
+- url: https://play.google.com/store/apps/details?id=com.Ishihara.englishdiary
+
+
+## <アプリの動作映像>
 
 https://github.com/TaiGa02/EnglishDiary/assets/135023031/b6224153-d896-432d-946d-c7c7074f83ca
 
