@@ -21,7 +21,6 @@
             android:layout_weight="1.5"
             android:text="PREV"
             android:onClick="prevMonth"
-            android:textColor="#FBE30A"
             android:textSize="15sp"
             android:textStyle="bold"/>
 
@@ -42,7 +41,6 @@
             android:layout_weight="1.5"
             android:text="NEXT"
             android:onClick="nextMonth"
-            android:textColor="#FBE30A"
             android:textSize="15sp"
             android:textStyle="bold"/>
     </LinearLayout>

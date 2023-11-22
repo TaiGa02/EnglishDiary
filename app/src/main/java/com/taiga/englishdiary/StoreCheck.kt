@@ -77,8 +77,17 @@ class StoreCheck : AppCompatActivity() {
                         Toast.makeText(applicationContext, "Your diary was updated.", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@StoreCheck, Calender::class.java)
                         intent.putExtra("selectedDate", date)
+
+                        // MainActivityを新たに起動するためのIntentを作成
+                        val mainIntent = Intent(this@StoreCheck, MainActivity::class.java)
+                        mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+
+                        //  スタック内のアクティビティを全て終了させる
+                        finishAffinity()
+                        // Mainをスタックに追加、その後カレンダーページをスタックに追加
+                        // カレンダーからメインにアンドロイドのコントロールパネルの戻るボタンによって戻ることができる
+                        startActivity(mainIntent)
                         startActivity(intent)
-                        finish()
                     }
                     .setNegativeButton("No") { dialog, id ->
                         dialog.cancel()
@@ -103,8 +112,17 @@ class StoreCheck : AppCompatActivity() {
                 // 日付情報をIntentに追加してカレンダー画面に遷移
                 val intent = Intent(this@StoreCheck, Calender::class.java)
                 intent.putExtra("selectedDate", date) // dateはStoreCheck内で定義された日付情報
+
+                // MainActivityを新たに起動するためのIntentを作成
+                val mainIntent = Intent(this@StoreCheck, MainActivity::class.java)
+                mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+
+                //  スタック内のアクティビティを全て終了させる
+                finishAffinity()
+                // Mainをスタックに追加、その後カレンダーページをスタックに追加
+                // カレンダーからメインにアンドロイドのコントロールパネルの戻るボタンによって戻ることができる
+                startActivity(mainIntent)
                 startActivity(intent)
-                finish()
             }
         }
     }
