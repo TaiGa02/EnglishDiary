@@ -1,5 +1,5 @@
 # ![diary](https://github.com/TaiGa02/EnglishDiary/assets/135023031/5a9719a3-100b-40f8-b32f-310a85d71e11)  EnglishDiary 英語日記
-※2023年11月23日現在google play storeに申請を中断<br>
+※2023年11月23日から現在までgoogle play storeに申請を中断<br>
 リリースをするために必要なクローズドテストの要件の20人以上のテスターに14日以上連続で使用してもらうハードルが今は高いため、中断中
 
 
