@@ -17,6 +17,7 @@ https://support.google.com/googleplay/android-developer/answer/14151465#producti
 - url: https://groups.google.com/my-groups
 - 参加後記載されているurlからAndroidのgoogle playを使用しご利用可能となっています。
 - url: https://play.google.com/store/apps/details?id=com.Ishihara.englishdiary
+- 月が替わって最初の週に日記の保存が上手く反映されない（カレンダーの一番上の段）
 
 
 ## <アプリの動作映像>
